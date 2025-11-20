@@ -12,6 +12,7 @@ appcompat = "1.7.1"
 material = "1.13.0"
 ktor = "3.3.2"
 kotlinxSerialization = "1.9.0"
+network-module = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,6 +41,9 @@ ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version
 
 # Kotlinx Serialization
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+
+# Network Module
+network-module = { group = "com.github.khattab-dev", name = "Network-Module", version.ref = "network-module" }
 
 
 [plugins]

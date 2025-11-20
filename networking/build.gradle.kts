@@ -4,6 +4,29 @@ plugins {
     `maven-publish`
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            from(components["release"])
+            groupId = "com.github.khattab-dev"
+            artifactId = "networking"
+            version = "1.0.1"
+        }
+    }
+
+    repositories {
+        maven {
+            name = "Khattab Network Module"
+            url = uri("https://maven.pkg.github.com/khattab-dev/Network-Module")
+
+            credentials {
+                username = System.getenv("GITHUB_ACTOR") ?: "khattab-dev"
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+
 android {
     namespace = "com.khattab.networking"
     compileSdk {
@@ -24,31 +47,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
-    }
-
-    afterEvaluate {
-        publishing {
-            publications {
-                create<MavenPublication>("release") {
-                    from(components["release"])
-                    groupId = "com.github.khattab-dev"
-                    artifactId = "networking"
-                    version = "1.0.0"
-                }
-            }
-
-            repositories {
-                maven {
-                    name = "Khattab Network Module"
-                    url = uri("https://maven.pkg.github.com/khattab-dev/Network-Module")
-
-                    credentials {
-                        username = System.getenv("GITHUB_ACTOR") ?: "khattab-dev"
-                        password = System.getenv("GITHUB_TOKEN")
-                    }
-                }
-            }
         }
     }
 
