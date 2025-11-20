@@ -27,10 +27,28 @@ android {
         }
     }
 
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
+    afterEvaluate {
+        publishing {
+            publications {
+                create<MavenPublication>("release") {
+                    from(components["release"])
+                    groupId = "com.github.khattab-dev"
+                    artifactId = "networking"
+                    version = "1.0.0"
+                }
+            }
+
+            repositories {
+                maven {
+                    name = "Khattab Network Module"
+                    url = uri("https://maven.pkg.github.com/khattab-dev/Network-Module")
+
+                    credentials {
+                        username = System.getenv("GITHUB_ACTOR") ?: "khattab-dev"
+                        password = System.getenv("GITHUB_TOKEN")
+                    }
+                }
+            }
         }
     }
 
@@ -53,24 +71,4 @@ dependencies {
 
     implementation(libs.bundles.ktor)
     implementation(libs.kotlinx.serialization.json)
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-
-                groupId = "com.github.khattab-dev"
-                artifactId = "networking"
-                version = "1.0.0"
-
-                pom {
-                    name.set("Networking Module")
-                    description.set("A Ktor-based networking library for Android")
-                    url.set("https://github.com/khattab-dev/Network-Module")
-                }
-            }
-        }
-    }
 }
