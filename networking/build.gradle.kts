@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    `maven-publish`
 }
 
 android {
@@ -44,4 +45,24 @@ dependencies {
 
     implementation(libs.bundles.ktor)
     implementation(libs.kotlinx.serialization.json)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+
+                groupId = "com.github.khattab-dev"
+                artifactId = "networking"
+                version = "1.0.0"
+
+                pom {
+                    name.set("Networking Module")
+                    description.set("A Ktor-based networking library for Android")
+                    url.set("https://github.com/khattab-dev/Network-Module")
+                }
+            }
+        }
+    }
 }
