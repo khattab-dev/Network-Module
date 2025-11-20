@@ -1,6 +1,6 @@
 [versions]
 agp = "8.13.1"
-kotlin = "2.0.21"
+kotlin = "2.2.21"
 coreKtx = "1.17.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
@@ -34,7 +34,6 @@ material = { group = "com.google.android.material", name = "material", version.r
 # Ktor
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
-ktor-client-serialization = { group = "io.ktor", name = "ktor-client-serialization", version.ref = "ktor" }
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
@@ -53,7 +52,6 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 ktor = [
     "ktor-client-core",
     "ktor-client-android",
-    "ktor-client-serialization",
     "ktor-client-content-negotiation",
     "ktor-serialization-kotlinx-json",
     "ktor-client-logging"
